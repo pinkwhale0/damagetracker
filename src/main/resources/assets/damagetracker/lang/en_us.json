@@ -1,5 +1,7 @@
 {
-  "key.damagetracker.toggle": "Toggle Damage Overlay",
-  "key.damagetracker.clear": "Clear Damage Data",
-  "key.categories.damagetracker": "Damage Tracker"
+  "key.categories.damagetracker": "Damage Tracker",
+  "key.damagetracker.toggle": "Toggle Overlay",
+  "key.damagetracker.move": "Move/Edit Overlay",
+  "key.damagetracker.clear": "Clear Data",
+  "key.damagetracker.report": "Open Damage Report"
 }

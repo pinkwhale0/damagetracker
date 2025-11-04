@@ -166,16 +166,18 @@ Writing Output: C:\Users\shuns\Desktop\damagetracker\build\reobfJar\output.jar
   com/dawnforger/damagetracker/client/ClientDamageStore.class
   com/dawnforger/damagetracker/client/DamageChatTap.class
   com/dawnforger/damagetracker/client/DamageOverlay.class
+  com/dawnforger/damagetracker/client/DamageOverlayAddendum.class
   com/dawnforger/damagetracker/client/DamageOverlayToggleShim.class
   com/dawnforger/damagetracker/client/DamageParsers.class
   com/dawnforger/damagetracker/client/DamageReportScreen.class
   com/dawnforger/damagetracker/client/ElementColors.class
   com/dawnforger/damagetracker/client/HeuristicChatParser$Parsed.class
   com/dawnforger/damagetracker/client/HeuristicChatParser.class
-  com/dawnforger/damagetracker/client/Keybinds$Runtime.class
+  com/dawnforger/damagetracker/client/Keybinds$ClientHandler.class
   com/dawnforger/damagetracker/client/Keybinds.class
   com/dawnforger/damagetracker/client/OverlayMoveScreen$Bounds.class
   com/dawnforger/damagetracker/client/OverlayMoveScreen.class
   com/dawnforger/damagetracker/client/RegexProfile$Parsed.class
   com/dawnforger/damagetracker/client/RegexProfile.class
+  com/dawnforger/damagetracker/client/RenderHooks.class
   pack.mcmeta

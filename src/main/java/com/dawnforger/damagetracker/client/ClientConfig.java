@@ -10,6 +10,7 @@ public final class ClientConfig {
 
     public static final ForgeConfigSpec SPEC;
 
+    // Overlay / behavior
     public static final ForgeConfigSpec.IntValue TIME_WINDOW_MS;
     public static final ForgeConfigSpec.BooleanValue ROLLING_WINDOW_ENABLED;
     public static final ForgeConfigSpec.IntValue TOP_N_SOURCES;
@@ -19,30 +20,34 @@ public final class ClientConfig {
     public static final ForgeConfigSpec.IntValue OVERLAY_MAX_HEIGHT;
     public static final ForgeConfigSpec.BooleanValue OVERLAY_ENABLED_DEFAULT;
 
+    // Background style
     public static final ForgeConfigSpec.BooleanValue OVERLAY_BG_ENABLED;
-    public static final ForgeConfigSpec.IntValue OVERLAY_BG_COLOR;
-    public static final ForgeConfigSpec.IntValue OVERLAY_BG_ALPHA;
-    public static final ForgeConfigSpec.IntValue OVERLAY_BG_PADDING;
+    public static final ForgeConfigSpec.IntValue OVERLAY_BG_COLOR;   // ARGB
+    public static final ForgeConfigSpec.IntValue OVERLAY_BG_ALPHA;   // 0-255
+    public static final ForgeConfigSpec.IntValue OVERLAY_BG_PADDING; // px
 
-    // Row/bar style (NEW)
-    public static final ForgeConfigSpec.IntValue ROW_BAR_ALPHA;
-    public static final ForgeConfigSpec.IntValue ROW_HEIGHT;
-    public static final ForgeConfigSpec.IntValue ROW_GAP;
-    public static final ForgeConfigSpec.IntValue ROW_VALUE_GAP;
+    // Row/bar style
+    public static final ForgeConfigSpec.IntValue ROW_BAR_ALPHA;      // 0-255
+    public static final ForgeConfigSpec.IntValue ROW_HEIGHT;         // px
+    public static final ForgeConfigSpec.IntValue ROW_GAP;            // px
+    public static final ForgeConfigSpec.IntValue ROW_VALUE_GAP;      // px
 
+    // Capture
     public static final ForgeConfigSpec.BooleanValue REQUIRE_SELF_ONLY;
     public static final ForgeConfigSpec.IntValue DEDUPE_MS;
     public static final ForgeConfigSpec.BooleanValue PREFER_DEALT_OVER_APPLIED;
     public static final ForgeConfigSpec.IntValue IDLE_FREEZE_MS;
 
-    public static final ForgeConfigSpec.IntValue COLOR_PHYSICAL;
-    public static final ForgeConfigSpec.IntValue COLOR_FIRE;
-    public static final ForgeConfigSpec.IntValue COLOR_LIGHTNING;
-    public static final ForgeConfigSpec.IntValue COLOR_COLD;
-    public static final ForgeConfigSpec.IntValue COLOR_NATURE;
-    public static final ForgeConfigSpec.IntValue COLOR_SHADOW;
-    public static final ForgeConfigSpec.IntValue COLOR_HOLY;
-    public static final ForgeConfigSpec.IntValue COLOR_MULTI;
+    // Element Colors
+    public static final ForgeConfigSpec.IntValue COLOR_PHYSICAL;     // Orange
+    public static final ForgeConfigSpec.IntValue COLOR_FIRE;         // Red
+    public static final ForgeConfigSpec.IntValue COLOR_LIGHTNING;    // Yellow
+    public static final ForgeConfigSpec.IntValue COLOR_COLD;         // Light Blue
+    public static final ForgeConfigSpec.IntValue COLOR_NATURE;       // (unchanged)
+    public static final ForgeConfigSpec.IntValue COLOR_SHADOW;       // (unchanged)
+    public static final ForgeConfigSpec.IntValue COLOR_HOLY;         // (unchanged)
+    public static final ForgeConfigSpec.IntValue COLOR_MULTI;        // Violet
+    public static final ForgeConfigSpec.IntValue COLOR_CHAOS;        // Purple
 
     static {
         ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
@@ -60,8 +65,9 @@ public final class ClientConfig {
 
         b.push("overlayBg");
         OVERLAY_BG_ENABLED = b.define("enabled", true);
-        OVERLAY_BG_COLOR = b.defineInRange("colorARGB", 0xAA000000, Integer.MIN_VALUE, Integer.MAX_VALUE);
-        OVERLAY_BG_ALPHA = b.defineInRange("alpha", 170, 0, 255);
+        // Flat green, zero transparency (opaque). ARGB is kept, alpha below also set to 255.
+        OVERLAY_BG_COLOR = b.defineInRange("colorARGB", 0xFF666666, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        OVERLAY_BG_ALPHA = b.defineInRange("alpha", 255, 0, 255);
         OVERLAY_BG_PADDING = b.defineInRange("padding", 6, 0, 32);
         b.pop();
 
@@ -81,14 +87,16 @@ public final class ClientConfig {
 
         b.push("colors");
         final int MIN = Integer.MIN_VALUE, MAX = Integer.MAX_VALUE;
-        COLOR_PHYSICAL  = b.defineInRange("physical",  0xFFCCCCCC, MIN, MAX);
-        COLOR_FIRE      = b.defineInRange("fire",      0xFFFF6B5A, MIN, MAX);
-        COLOR_LIGHTNING = b.defineInRange("lightning", 0xFFFFE066, MIN, MAX);
-        COLOR_COLD      = b.defineInRange("cold",      0xFF66CCFF, MIN, MAX);
-        COLOR_NATURE    = b.defineInRange("nature",    0xFF6EDC6E, MIN, MAX);
-        COLOR_SHADOW    = b.defineInRange("shadow",    0xFFB266FF, MIN, MAX);
-        COLOR_HOLY      = b.defineInRange("holy",      0xFFFFF3B0, MIN, MAX);
-        COLOR_MULTI     = b.defineInRange("multi",     0xFFB0B0B0, MIN, MAX);
+        // Updated defaults per request
+        COLOR_PHYSICAL  = b.defineInRange("physical",  0xFFFFA500, MIN, MAX); // Orange
+        COLOR_FIRE      = b.defineInRange("fire",      0xFFFF0000, MIN, MAX); // Red
+        COLOR_LIGHTNING = b.defineInRange("lightning", 0xFFFFFF00, MIN, MAX); // Yellow
+        COLOR_COLD      = b.defineInRange("cold",      0xFF66CCFF, MIN, MAX); // Light Blue
+        COLOR_NATURE    = b.defineInRange("nature",    0xFF6EDC6E, MIN, MAX); // keep
+        COLOR_SHADOW    = b.defineInRange("shadow",    0xFFB266FF, MIN, MAX); // keep
+        COLOR_HOLY      = b.defineInRange("holy",      0xFFFFF3B0, MIN, MAX); // keep
+        COLOR_MULTI     = b.defineInRange("multi",     0xFF8A2BE2, MIN, MAX); // Violet
+        COLOR_CHAOS     = b.defineInRange("chaos",     0xFF800080, MIN, MAX); // Purple
         b.pop();
 
         SPEC = b.build();
