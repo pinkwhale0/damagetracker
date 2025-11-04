@@ -175,6 +175,7 @@ Writing Output: C:\Users\shuns\Desktop\damagetracker\build\reobfJar\output.jar
   com/dawnforger/damagetracker/client/HeuristicChatParser.class
   com/dawnforger/damagetracker/client/Keybinds$ClientHandler.class
   com/dawnforger/damagetracker/client/Keybinds.class
+  com/dawnforger/damagetracker/client/MoveOverlayOpenShim.class
   com/dawnforger/damagetracker/client/OverlayMoveScreen$Bounds.class
   com/dawnforger/damagetracker/client/OverlayMoveScreen.class
   com/dawnforger/damagetracker/client/RegexProfile$Parsed.class
