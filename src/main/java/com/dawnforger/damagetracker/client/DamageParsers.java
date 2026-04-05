@@ -11,14 +11,14 @@ public final class DamageParsers {
 
     public static String normalize(String s) {
         if (s == null) return "";
-        return s.replace('\u00A0',' ').replaceAll("\\s+", " ").trim();
+        return s.replaceAll("§[0-9a-fk-orA-FK-OR]", "").replace('\u00A0',' ').replaceAll("\\s+", " ").trim();
     }
 
     public static void tryRecordFromLine(String line) { tryRecordFromLineWithVerb(line, ""); }
 
     public static void tryRecordFromLineWithVerb(String line, String verb) {
         if (line == null || line.isEmpty()) return;
-
+	line = line.replaceAll("§[0-9a-fk-orA-FK-OR]", "");
         RegexProfile.Parsed p = RegexProfile.tryParse(line);
         if (p == null || p.amount <= 0 || (p.element.isEmpty() && p.skill.isEmpty())) {
             HeuristicChatParser.Parsed h = HeuristicChatParser.parse(line);
